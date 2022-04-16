@@ -1,0 +1,19 @@
+# source oldff/leaprc.ff99SB
+source leaprc.protein.ff19SB
+# source leaprc.water.tip4pew
+source leaprc.gaff2
+
+OX = loadmol2 o2.mol2
+check OX
+
+loadoff chcl3box.off
+loadamberparams frcmod.chcl3
+
+# solvate
+# loadoff solvents.lib
+# loadamberparams frcmod.chcl3
+solvatebox OX CHCL3BOX 10.0 iso
+
+# save
+saveamberparm OX o2.prmtop o2.inpcrd
+quit 
